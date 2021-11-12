@@ -1,0 +1,43 @@
+1. Crear una tabla de staging
+
+    banco.ubicacion.deudas
+        schema != schema referencia
+        pago_parcial {FLOAT}
+        texto {STRING ("",/&#/&"/($.))}
+
+    schema_ref.json
+
+    banco.ubicacion._deudas_staging
+        schema == schema referencia
+        pago_parcial {BIGDECIMAL}
+
+    Para TF: crea una tabla con este nombre y con este schema
+
+2. Extraer los datos de la tabla fuente
+
+    banco.ubicacion.deudas
+        ...
+        data -> ubicacion temporal
+        data -> Google Cloud Storage
+                PARQUET         X
+                AVRO            X
+                ...
+                CSV             Cool
+
+    Para TF: extrae la tabla fuente
+
+3. Cargar la data del CSV a la tabla de staging
+
+        GCS data -> banco.ubicacion._deudas_staging
+
+4. Crear backup
+
+    banco.ubicacion.deudas_copy
+
+    copy_job
+
+5. Destruir tabla fuente
+
+6. Copiar tabla staging a nombre de tabla fuente
+
+
