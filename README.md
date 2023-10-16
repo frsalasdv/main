@@ -1,3 +1,3 @@
 # main
 
-tarea nueva
+tarea nueva en deq
